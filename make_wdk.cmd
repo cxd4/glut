@@ -65,7 +65,7 @@ set libs=/LIBPATH:"%DDK%\lib\crt\%target%" /LIBPATH:"%DDK%\lib\wnet\%target%"
 
 set GLUT_DEFINES=/D "_WINDLL" /D "WIN64" /D "NDEBUG" /D "_WINDOWS" /D "_USRDLL" /D "GLUT32_EXPORTS" /U "GLUT_USE_SGI_OPENGL"
 set C_FLAGS=/W3 /GL /O1 /Os /Oi /GS- /TC %GLUT_DEFINES% /MD
-set output=/OUT:glut32.dll /DLL
+set output=/OUT:glut32.dll /DLL /DEF:"%src%\glut.def"
 set LINK_FLAGS=%libs% kernel32.lib user32.lib gdi32.lib winmm.lib opengl32.lib glu32.lib /NOENTRY
 
 %MSVC%\cl.exe %includes% %C_FLAGS% %files% /link %output% %LINK_FLAGS%
